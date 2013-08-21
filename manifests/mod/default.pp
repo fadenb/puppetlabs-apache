@@ -31,9 +31,9 @@ class apache::mod::default {
     apache::mod { 'authn_alias': }
     apache::mod { 'authn_default': }
     apache::mod { 'authz_default': }
-    apache::mod { 'authnz_ldap': }
-    apache::mod { 'ldap': }
   }
+  apache::mod { 'authnz_ldap': }
+  apache::mod { 'ldap': }
   apache::mod { 'authn_anon': }
   apache::mod { 'authn_dbm': }
   apache::mod { 'authn_file': }

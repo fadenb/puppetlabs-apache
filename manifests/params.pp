@@ -18,7 +18,8 @@
 # Sample Usage:
 #
 class apache::params (
-  $mpm = 'prefork'
+  $mpm = 'prefork',
+  $strict_security = true,
 ){
 
   $ssl           = true
@@ -47,7 +48,7 @@ class apache::params (
     $httpd_dir             = '/etc/httpd'
     $conf_dir              = "${httpd_dir}/conf"
     $mod_dir               = "${httpd_dir}/mod.d"
-    $vdir                  = "${httpd_dir}/conf.d"
+    $vdir                  = "${httpd_dir}/vhosts.d"
     $conf_file             = 'httpd.conf'
     $mod_packages          = {
       'dev'        => 'httpd-devel',
@@ -60,6 +61,9 @@ class apache::params (
       'ssl'        => 'mod_ssl',
       'wsgi'       => 'mod_wsgi',
       'shibboleth' => 'shibboleth',
+      #      if $::operatingsystem == 'Fedora' and $::operatingsystemmajrelease >= 18 {
+      #        'authnz_ldap' => 'mod_ldap',
+      #      }
     }
     if $::operatingsystem == 'Fedora' {
       # this needs testing on other platforms
